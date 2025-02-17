@@ -13,8 +13,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
+import type { SupportedLanguage } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
 import { Menu } from "lucide-react";
 
 interface NavMenuProps {
@@ -23,9 +24,12 @@ interface NavMenuProps {
   children?: NavMenuProps[];
 }
 
-const NavMenu: React.FC<{ navMenuItem: NavMenuProps[] }> = ({
-  navMenuItem,
-}) => {
+const NavMenu: React.FC<{
+  navMenuItem: NavMenuProps[];
+  lang: SupportedLanguage;
+}> = ({ navMenuItem, lang }) => {
+  const t = useTranslations(lang);
+
   return (
     <Sheet>
       <SheetTrigger className="lg:hidden">
@@ -76,7 +80,15 @@ const NavMenu: React.FC<{ navMenuItem: NavMenuProps[] }> = ({
           ))}
           <Separator />
           <li className="flex justify-center pt-4">
-            <Button className="lg:hidden">Report Incident</Button>
+            <a
+              href="https://www.camcert.gov.kh/en/report-incident/"
+              rel="noopener noreferrer"
+              target="_blank"
+              className="h-10 whitespace-nowrap rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 lg:hidden lg:px-3 xl:px-4"
+              type="button"
+            >
+              {t("nav.reportIncident")}
+            </a>
           </li>
         </ul>
       </SheetContent>
