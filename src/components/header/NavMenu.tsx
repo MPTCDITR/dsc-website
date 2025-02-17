@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -27,7 +29,10 @@ const NavMenu: React.FC<{ navMenuItem: NavMenuProps[] }> = ({
             <NavigationMenuItem key={item.label}>
               {item.href ? (
                 <NavigationMenuLink
-                  className={navigationMenuTriggerStyle()}
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "lg:px-1 xl:px-2 2xl:px-4",
+                  )}
                   href={item.href}
                 >
                   {item.label}
