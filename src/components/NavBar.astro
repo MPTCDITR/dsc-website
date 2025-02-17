@@ -5,7 +5,6 @@ import MobileNavMenu from "@/components/header/MobileNavMenu";
 import NavMenu from "@/components/header/NavMenu";
 
 import LanguageSwitcher from "./LanguageSwitcher";
-import { Button } from "./ui/button";
 import DSCHorizontalSubtitleBlue from "@/asset/logo/DSC-Horizontal-Subtitle-Blue.webp";
 import { defaultLang, type SupportedLanguage } from "@/i18n/ui";
 import { useTranslations } from "@/i18n/utils";
@@ -49,17 +48,20 @@ const t = useTranslations(lang);
         client:load
       />
     </div>
-    <MobileNavMenu navMenuItem={navigationItems} client:load />
+    <MobileNavMenu
+      navMenuItem={navigationItems}
+      lang={locale as SupportedLanguage}
+      client:load
+    />
     <a
       href="https://www.camcert.gov.kh/en/report-incident/"
       rel="noopener noreferrer"
       target="_blank"
-      class="hidden px-2 lg:block"
+      class="hidden h-10 whitespace-nowrap rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 lg:block lg:px-3 xl:px-4"
+      type="button"
     >
-      <Button className="lg:px-3 xl:px-4">
-        <TriangleAlert className="w-6 xl:hidden" />
-        <span class="hidden xl:flex">{t("nav.reportIncident")}</span>
-      </Button>
+      <TriangleAlert className="w-6 xl:hidden" />
+      <span class="hidden xl:flex">{t("nav.reportIncident")}</span>
     </a>
   </div>
 </nav>
