@@ -23,7 +23,7 @@ interface Props {
 
 const { title, lang, date, image, file, type } = Astro.props as Props;
 
-const absoluteFileUrl = new URL(file, Astro.url.origin).href;
+const absoluteFileUrl = new URL(file, Astro.site).href;
 const t = useTranslations(lang);
 ---
 
